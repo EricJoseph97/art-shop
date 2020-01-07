@@ -1,26 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import Inventory from './components/Inventory';
+import TopBar from './components/TopBar';
+import {Container} from '@material-ui/core'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    inventory: [
+      {
+        id: 1,
+        title: 'Clock',
+        img: '/images/car-blue.png',
+        cols: 2,
+        type: 'painting',
+        price: '20.00' 
+      },
+      {
+        id: 2,
+        title: 'Forest',
+        img: '/images/car-green.png',
+        type: 'painting',
+        price: '25.00' 
+      },
+      {
+        id: 3,
+        title: 'Mountain',
+        img: '/images/car-red.png',
+        type: 'painting',
+        price: '15.00' 
+      }
+    ]
+  }
+  render(){
+    return (
+      <div className="App">
+        <TopBar />
+        <Container>
+          <Inventory inventory={this.state.inventory}/>
+        </Container>
+        
+      </div>
+    );
+  }
+
 }
 
 export default App;
