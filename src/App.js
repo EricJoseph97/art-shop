@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Inventory from './components/Inventory';
 import TopBar from './components/TopBar';
+import UserForm from './components/UserForm';
 import {Container} from '@material-ui/core'
 
-class App extends Component {
-  state = {
-    inventory: [
+export default function App() {
+
+    const [inventory] = useState([
       {
         id: 1,
         title: 'Clock',
@@ -29,20 +30,18 @@ class App extends Component {
         type: 'painting',
         price: '15.00' 
       }
-    ]
-  }
-  render(){
+    ]);
+
+   
+
     return (
       <div className="App">
         <TopBar />
         <Container>
-          <Inventory inventory={this.state.inventory}/>
+          <Inventory inventory={inventory}/>
         </Container>
+        <UserForm />
         
       </div>
     );
   }
-
-}
-
-export default App;
