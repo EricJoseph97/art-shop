@@ -7,40 +7,24 @@ import {Container} from '@material-ui/core'
 
 export default function App() {
 
-    const [inventory] = useState([
-      {
-        id: 1,
-        title: 'Clock',
-        img: '/images/car-blue.png',
-        cols: 2,
-        type: 'painting',
-        price: '20.00' 
-      },
-      {
-        id: 2,
-        title: 'Forest',
-        img: '/images/car-green.png',
-        type: 'painting',
-        price: '25.00' 
-      },
-      {
-        id: 3,
-        title: 'Mountain',
-        img: '/images/car-red.png',
-        type: 'painting',
-        price: '15.00' 
-      }
-    ]);
+    const [ dialog, setDialog] = useState(false);
 
+    const handleClose = e => {
+      setDialog(false);
+    }
+
+    const handleOpen = e => {
+      setDialog(true);
+  }
    
 
     return (
       <div className="App">
-        <TopBar />
+        <TopBar openDialog={handleOpen}/>
         <Container>
-          <Inventory inventory={inventory}/>
+          <Inventory />
         </Container>
-        <UserForm />
+        <UserForm dialog={dialog} closeDialog={handleClose}/>
         
       </div>
     );

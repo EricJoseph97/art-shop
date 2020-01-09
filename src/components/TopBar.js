@@ -78,7 +78,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function TopBar() {
+export default function TopBar(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -99,6 +99,11 @@ export default function TopBar() {
     handleMobileMenuClose();
   };
 
+  const handleProfileClick = () => {
+    props.openDialog();
+    handleMenuClose();
+  }
+
   const handleMobileMenuOpen = event => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
@@ -114,7 +119,7 @@ export default function TopBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      <MenuItem onClick={handleProfileClick}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
     </Menu>
   );
@@ -153,7 +158,7 @@ export default function TopBar() {
           aria-haspopup="true"
           color="inherit"
         >
-          <AccountCircle/>
+          <AccountCircle />
         </IconButton>
         <p>Profile</p>
       </MenuItem>
@@ -208,7 +213,7 @@ export default function TopBar() {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle/>
+              <AccountCircle />
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>
