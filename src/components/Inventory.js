@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import InventoryItem from './InventoryItem';
 import axios from 'axios';
 import { GridList, GridListTile, GridListTileBar } from '@material-ui/core';
-const NASA_URL = 'https://images-api.nasa.gov/search?q=earth&media_type=image';
+
 const API_KEY="kcnkNlNpoC6hhOtCgK3dJf8qu8fQi3BXphikDx2k";
 
 
@@ -14,7 +14,7 @@ export default function Inventory(props) {
         const fetchData = async () => {
             try {
                 setInventory({inv: inventory.inv, isFetching: true});
-                const response = await axios.get(NASA_URL);    
+                const response = await axios.get('https://images-api.nasa.gov/search?q=' + props.search + '&media_type=image');    
                     console.log(response.data);
                     
                     setInventory({inv: [...response.data.collection.items], isFetching: false});
@@ -26,7 +26,7 @@ export default function Inventory(props) {
             
         };
         fetchData();
-    }, []);
+    }, [props.search]);
 
 
     return (
@@ -44,5 +44,9 @@ export default function Inventory(props) {
             </GridList>
         </div>
     );    
+}
+
+Inventory.defaultProps = {
+    search: 'earth'
 }
 
