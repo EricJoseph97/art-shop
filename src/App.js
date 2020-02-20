@@ -11,6 +11,7 @@ export default class App extends React.Component {
       super();
  
       this.state = {
+        searchHistory: undefined,
         search: undefined,
         typing: false,
         typingTimeout: 0,
@@ -31,16 +32,13 @@ export default class App extends React.Component {
       }
   
       const handleSearch = val => {
-        
         this.setState({search: val})
-        
-        console.log(this.state.search)      
       }
     
   
       return (
         <div className="App">
-          <TopBar searchChange={handleSearch.bind(this)} openDialog={handleOpen}/>
+          <TopBar handleSearch={handleSearch.bind(this)} openDialog={handleOpen}/>
           <Container>
             <Inventory search={this.state.search}/>
           </Container>
@@ -49,5 +47,4 @@ export default class App extends React.Component {
         </div>
       );
     }
-    
   }

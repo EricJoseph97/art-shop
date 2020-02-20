@@ -148,7 +148,7 @@ export default function TopBar(props) {
           <Typography className={classes.title} variant="h6" noWrap>
             Material-UI
           </Typography>
-          <Search searchChange={props.searchChange}/>
+          <Search handleSearch={props.handleSearch}/>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="show 4 new mails" color="inherit">

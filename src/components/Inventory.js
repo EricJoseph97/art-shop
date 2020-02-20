@@ -15,7 +15,6 @@ export default function Inventory(props) {
             try {
                 setInventory({inv: inventory.inv, isFetching: true});
                 const response = await axios.get('https://images-api.nasa.gov/search?q=' + props.search + '&media_type=image');    
-                    console.log(response.data);
                     
                     setInventory({inv: [...response.data.collection.items], isFetching: false});
     
